@@ -16,10 +16,22 @@
         "PUT",
         "DELETE"
       ],
-          "AuthenticationOptions": {
-        "AuthenticationProviderKey": "IdentityApiKey",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "TestKey",
         "AllowedScopes": []
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "productcaching"
+      },
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "1s",
+        "PeriodTimespan": 1,
+        "Limit": 1
       }
+
     },
     {
       "DownstreamPathTemplate": "/api/payments/{everything}",
@@ -36,7 +48,22 @@
         "POST",
         "PUT",
         "DELETE"
-      ]
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "TestKey",
+        "AllowedScopes": []
+      },
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "1s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15,
+        "Region": "paymentscaching"
+      }
     }
   ],
   "GlobalConfiguration": {}

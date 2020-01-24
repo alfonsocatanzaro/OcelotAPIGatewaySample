@@ -7,6 +7,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Ocelot.DependencyInjection;
 
 namespace OcelotAPIGateway
 {
@@ -21,7 +22,12 @@ namespace OcelotAPIGateway
 			WebHost.CreateDefaultBuilder(args)
 			.ConfigureAppConfiguration((host, config) =>
 			{
-				config.AddJsonFile(Path.Combine("configuration", "configuration.json"));
+				config
+				.SetBasePath(host.HostingEnvironment.ContentRootPath)
+				.AddJsonFile("appsettings.json", true, true)
+				.AddJsonFile($"appsettings.{host.HostingEnvironment.EnvironmentName}.json", true, true)
+				.AddOcelot("Configuration", host.HostingEnvironment)
+				.AddEnvironmentVariables();
 			})
 			.UseStartup<Startup>();
 	}

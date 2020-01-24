@@ -19,7 +19,7 @@
     },
     "OcelotAPIGateway": {
       "commandName": "Project",
-      "launchBrowser": true,
+      "launchBrowser": false,
       "launchUrl": "api/v1/products/1",
       "applicationUrl": "http://localhost:5100",
       "environmentVariables": {
